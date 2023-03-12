@@ -16,8 +16,7 @@ public class ManagerSearch {
     }
 
     public Airfare[] findAll() {
-        Airfare[] redirect = repo.getItems();
-        return redirect;
+        return repo.getItems();
     }
 
     public Airfare[] findAllSearch(String from, String to) {
@@ -45,7 +44,7 @@ public class ManagerSearch {
 
     // метод определения соответствия товара product запросу search
     public boolean matchesIATA(Airfare product, String searchFrom, String searchTo) {
-        if (product.getArrivalAirport().contains(searchTo) & product.getDepartureAirport().contains(searchFrom)) {
+        if (product.getArrivalAirport() == searchTo & product.getDepartureAirport()== searchFrom) {
             return true;
         } else {
             return false;
