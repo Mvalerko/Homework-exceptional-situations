@@ -1,6 +1,8 @@
 package org.example;
 
-public class ManagerSearch {
+import java.util.Arrays;
+
+public class ManagerSearch  {
     AirfareRepository repo = new AirfareRepository();
 
     public ManagerSearch(AirfareRepository repo) {
@@ -20,7 +22,9 @@ public class ManagerSearch {
     }
 
     public Airfare[] findAllSearch(String from, String to) {
-        return searchBy(from, to);
+        Airfare[] sortingSearch = searchBy(from, to);
+        Arrays.sort(sortingSearch);
+        return sortingSearch;
     }
 
 

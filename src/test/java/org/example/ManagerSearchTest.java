@@ -30,7 +30,7 @@ class ManagerSearchTest {
     );
     Airfare berlinRomeB = new Airfare(
             4,
-            "BERL",
+            "BER2",
             "FCO",
             12764,
             136
@@ -49,8 +49,15 @@ class ManagerSearchTest {
             13765,
             136
     );
+    Airfare berlinRomeE = new Airfare(
+            7,
+            "BER",
+            "FCO",
+            13765,
+            136
+    );
     @Test
-    void findAllSearch() {
+    void findAllSearchWithSort() {
         AirfareRepository repo = new AirfareRepository();
         ManagerSearch mgr = new ManagerSearch(repo);
 
@@ -60,10 +67,12 @@ class ManagerSearchTest {
         mgr.add(berlinRomeB);
         mgr.add(berlinRomeC);
         mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
 
-        Airfare[] expected = {berlinRomeA, berlinRomeC, berlinRomeD};
+        Airfare[] expected = {berlinRomeD, berlinRomeE, berlinRomeA, berlinRomeC};
         Airfare[] actual = mgr.findAllSearch("BER", "FCO");
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
 }
