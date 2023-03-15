@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class ManagerSearch  {
     AirfareRepository repo = new AirfareRepository();
+    AirfarePriceComparator priceComparator = new AirfarePriceComparator();
+    AirfareTimeComparator timeComparator = new AirfareTimeComparator();
 
     public ManagerSearch(AirfareRepository repo) {
 
@@ -21,9 +23,14 @@ public class ManagerSearch  {
         return repo.getItems();
     }
 
-    public Airfare[] findAllSearch(String from, String to) {
+    public Airfare[] findAllSearchMinPrice(String from, String to) {
         Airfare[] sortingSearch = searchBy(from, to);
-        Arrays.sort(sortingSearch);
+        Arrays.sort(sortingSearch, priceComparator);
+        return sortingSearch;
+    }
+    public Airfare[] findAllSearchMinTime(String from, String to) {
+        Airfare[] sortingSearch = searchBy(from, to);
+        Arrays.sort(sortingSearch, timeComparator);
         return sortingSearch;
     }
 
