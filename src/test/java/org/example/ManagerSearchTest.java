@@ -3,9 +3,6 @@ package org.example;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
-import static org.junit.jupiter.api.Assertions.*;
-
 class ManagerSearchTest {
     Airfare moscowLondon = new Airfare(
             1,
@@ -71,6 +68,42 @@ class ManagerSearchTest {
 
         Airfare[] expected = {berlinRomeD, berlinRomeE, berlinRomeA, berlinRomeC};
         Airfare[] actual = mgr.findAllSearch("BER", "FCO");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void findAllSearchWithSortOneTicket() {
+        AirfareRepository repo = new AirfareRepository();
+        ManagerSearch mgr = new ManagerSearch(repo);
+
+        mgr.add(moscowLondon);
+        mgr.add(budapestAlicante);
+        mgr.add(berlinRomeA);
+        mgr.add(berlinRomeB);
+        mgr.add(berlinRomeC);
+        mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
+
+        Airfare[] expected = {budapestAlicante};
+        Airfare[] actual = mgr.findAllSearch("BUD", "ALC");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void findAllSearchWithSortZeroTicket() {
+        AirfareRepository repo = new AirfareRepository();
+        ManagerSearch mgr = new ManagerSearch(repo);
+
+        mgr.add(moscowLondon);
+        mgr.add(budapestAlicante);
+        mgr.add(berlinRomeA);
+        mgr.add(berlinRomeB);
+        mgr.add(berlinRomeC);
+        mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
+
+        Airfare[] expected = {};
+        Airfare[] actual = mgr.findAllSearch("BKD", "ALC");
 
         Assertions.assertArrayEquals(expected, actual);
     }
