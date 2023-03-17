@@ -74,6 +74,42 @@ class ManagerSearchTest {
         Assertions.assertArrayEquals(expected, actual);
     }
     @Test
+    void findAllSearchMinPriceOneTicket() {
+        AirfareRepository repo = new AirfareRepository();
+        ManagerSearch mgr = new ManagerSearch(repo);
+
+        mgr.add(moscowLondon);
+        mgr.add(budapestAlicante);
+        mgr.add(berlinRomeA);
+        mgr.add(berlinRomeB);
+        mgr.add(berlinRomeC);
+        mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
+
+        Airfare[] expected = {budapestAlicante};
+        Airfare[] actual = mgr.findAllSearchMinPrice("BUD", "ALC");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void findAllSearchMinPriceZeroTicket() {
+        AirfareRepository repo = new AirfareRepository();
+        ManagerSearch mgr = new ManagerSearch(repo);
+
+        mgr.add(moscowLondon);
+        mgr.add(budapestAlicante);
+        mgr.add(berlinRomeA);
+        mgr.add(berlinRomeB);
+        mgr.add(berlinRomeC);
+        mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
+
+        Airfare[] expected = {};
+        Airfare[] actual = mgr.findAllSearchMinPrice("BKD", "ALC");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
     void findAllSearchWithSortMinTime() {
         AirfareRepository repo = new AirfareRepository();
         ManagerSearch mgr = new ManagerSearch(repo);
@@ -88,6 +124,42 @@ class ManagerSearchTest {
 
         Airfare[] expected = {berlinRomeC, berlinRomeE, berlinRomeA, berlinRomeD};
         Airfare[] actual = mgr.findAllSearchMinTime("BER", "FCO");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void findAllSearchMinTimeOneTicket() {
+        AirfareRepository repo = new AirfareRepository();
+        ManagerSearch mgr = new ManagerSearch(repo);
+
+        mgr.add(moscowLondon);
+        mgr.add(budapestAlicante);
+        mgr.add(berlinRomeA);
+        mgr.add(berlinRomeB);
+        mgr.add(berlinRomeC);
+        mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
+
+        Airfare[] expected = {budapestAlicante};
+        Airfare[] actual = mgr.findAllSearchMinTime("BUD", "ALC");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    void findAllSearchMinTimeZeroTicket() {
+        AirfareRepository repo = new AirfareRepository();
+        ManagerSearch mgr = new ManagerSearch(repo);
+
+        mgr.add(moscowLondon);
+        mgr.add(budapestAlicante);
+        mgr.add(berlinRomeA);
+        mgr.add(berlinRomeB);
+        mgr.add(berlinRomeC);
+        mgr.add(berlinRomeD);
+        mgr.add(berlinRomeE);
+
+        Airfare[] expected = {};
+        Airfare[] actual = mgr.findAllSearchMinTime("BUD", "JDB");
 
         Assertions.assertArrayEquals(expected, actual);
     }
