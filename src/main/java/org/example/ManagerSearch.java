@@ -48,7 +48,7 @@ public class ManagerSearch  {
 
     // метод определения соответствия товара product запросу search
     public boolean matchesIATA(Airfare product, String searchFrom, String searchTo) {
-        if (product.getArrivalAirport() == searchTo & product.getDepartureAirport()== searchFrom) {
+        if (product.getArrivalAirport().equals(searchTo) & product.getDepartureAirport().equals(searchFrom)) {
             return true;
         } else {
             return false;
