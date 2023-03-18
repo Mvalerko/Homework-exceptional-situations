@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class ManagerSearchTest {
+    AirfarePriceComparator priceComparator = new AirfarePriceComparator();
+    AirfareTimeComparator timeComparator = new AirfareTimeComparator();
     Airfare moscowLondon = new Airfare(
             1,
             "DME",
@@ -69,10 +71,11 @@ class ManagerSearchTest {
         mgr.add(berlinRomeE);
 
         Airfare[] expected = {berlinRomeD, berlinRomeE, berlinRomeA, berlinRomeC};
-        Airfare[] actual = mgr.findAllSearchMinPrice("BER", "FCO");
+        Airfare[] actual = mgr.findAllSearch("BER", "FCO", priceComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    
     @Test
     void findAllSearchMinPriceOneTicket() {
         AirfareRepository repo = new AirfareRepository();
@@ -87,7 +90,7 @@ class ManagerSearchTest {
         mgr.add(berlinRomeE);
 
         Airfare[] expected = {budapestAlicante};
-        Airfare[] actual = mgr.findAllSearchMinPrice("BUD", "ALC");
+        Airfare[] actual = mgr.findAllSearch("BUD", "ALC", priceComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -105,7 +108,7 @@ class ManagerSearchTest {
         mgr.add(berlinRomeE);
 
         Airfare[] expected = {};
-        Airfare[] actual = mgr.findAllSearchMinPrice("BKD", "ALC");
+        Airfare[] actual = mgr.findAllSearch("BKD", "ALC", priceComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -123,7 +126,7 @@ class ManagerSearchTest {
         mgr.add(berlinRomeE);
 
         Airfare[] expected = {berlinRomeC, berlinRomeE, berlinRomeA, berlinRomeD};
-        Airfare[] actual = mgr.findAllSearchMinTime("BER", "FCO");
+        Airfare[] actual = mgr.findAllSearch("BER", "FCO", timeComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -141,7 +144,7 @@ class ManagerSearchTest {
         mgr.add(berlinRomeE);
 
         Airfare[] expected = {budapestAlicante};
-        Airfare[] actual = mgr.findAllSearchMinTime("BUD", "ALC");
+        Airfare[] actual = mgr.findAllSearch("BUD", "ALC", timeComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -159,9 +162,11 @@ class ManagerSearchTest {
         mgr.add(berlinRomeE);
 
         Airfare[] expected = {};
-        Airfare[] actual = mgr.findAllSearchMinTime("BUD", "JDB");
+        Airfare[] actual = mgr.findAllSearch("BUD", "JDB", timeComparator);
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+
 
 }
