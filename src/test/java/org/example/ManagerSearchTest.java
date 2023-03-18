@@ -75,7 +75,7 @@ class ManagerSearchTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
-    
+
     @Test
     void findAllSearchMinPriceOneTicket() {
         AirfareRepository repo = new AirfareRepository();
