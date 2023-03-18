@@ -3,9 +3,11 @@ package org.example;
 import java.util.Arrays;
 
 public class ManagerSearch  {
-    AirfareRepository repo = new AirfareRepository();
+    AirfareRepository repo;
 
-    public ManagerSearch(AirfareRepository repo) {
+    public ManagerSearch(AirfareRepository repoOpt) {
+
+        this.repo = repoOpt;
 
     }
 
