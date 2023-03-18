@@ -1,6 +1,6 @@
 package org.example;
 
-public class Airfare implements Comparable<Airfare> {
+public class Airfare {
     protected int id;
     protected int price;
     protected String departureAirport;
@@ -55,14 +55,4 @@ public class Airfare implements Comparable<Airfare> {
         this.travelTime = travelTimeOpt;
     }
 
-    @Override
-    public int compareTo(Airfare c) {
-        if (this.price < c.price) {
-            return -1;
-        } else if (this.price > c.price) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
 }

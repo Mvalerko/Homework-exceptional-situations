@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class ManagerSearch  {
     AirfareRepository repo;
@@ -23,12 +24,11 @@ public class ManagerSearch  {
         return repo.getItems();
     }
 
-    public Airfare[] findAllSearch(String from, String to) {
+    public Airfare[] findAllSearch(String from, String to, Comparator<Airfare> comparatorOpt) {
         Airfare[] sortingSearch = searchBy(from, to);
-        Arrays.sort(sortingSearch);
+        Arrays.sort(sortingSearch, comparatorOpt);
         return sortingSearch;
     }
-
 
     public Airfare[] searchBy(String fromOpt, String toOpt) {
         Airfare[] result = new Airfare[0]; // тут будем хранить подошедшие запросу продукты
